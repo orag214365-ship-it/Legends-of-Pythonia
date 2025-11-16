@@ -1,6 +1,7 @@
 {
     "name": "orag",
-    "class": "tank",
+    "class": "summoner",
     "level": 1,
-    "donewithcreation": 1
+    "donewithcreation": 1,
+    "area": 1
 }

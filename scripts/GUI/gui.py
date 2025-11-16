@@ -1,6 +1,6 @@
 import pygame
 import sys
-from GUI.gui_classes import Button
+from GUI.gui_classes import Button, DialogueBox
 
 
 def testScreen():
@@ -10,12 +10,21 @@ def testScreen():
     font = pygame.font.Font("assets/BoldPixels.ttf", 50)
     button = Button(150, 120, 100, 50, "Click", font,
                     (70, 130, 180), (100, 160, 210), (255, 255, 255))
+    dialogue = DialogueBox(200, 200, 300, 50, font,
+                           (255, 255, 255), (0, 0, 0), 0.05)
+    dialogue.set_text("This is a test")
+    clock = pygame.time.Clock()
+    running = True
 
-    while True:
+    while running:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 pygame.quit()
                 sys.exit()
+            dialogue.handle_event(event)
+
+        dialogue.update()
+        dialogue.draw(screen)
 
         keypressed = pygame.key.get_pressed()
         if keypressed[pygame.K_ESCAPE]:
@@ -29,6 +38,7 @@ def testScreen():
             sys.exit(0)
 
         pygame.display.flip()
+        clock.tick(60)
 
 
 def startScreen():
@@ -54,3 +64,8 @@ def startScreen():
         if startGameButton.draw(screen):
             running = False
         pygame.display.flip()
+
+
+def tutorial():
+    pygame.init()
+    screen = pygame.display.set_mode((650, 500))

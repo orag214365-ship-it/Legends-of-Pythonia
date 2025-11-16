@@ -30,8 +30,8 @@ class Button:
 
 
 class Entry:
-    def __init__(self, x, y, w, h, font, placeholder=""):
-        self.rect = pygame.Rect(x, y, w, h)
+    def __init__(self, x, y, width, height, font, placeholder=""):
+        self.rect = pygame.Rect(x, y, width, height)
         self.color_inactive = (120, 120, 120)
         self.color_active = (255, 165, 0)
         self.color = self.color_inactive
@@ -66,3 +66,31 @@ class Entry:
 
     def get_text(self):
         return self.text
+
+
+class DialogueBox:
+    def __init__(self, x, y, width, height, text, font, color, hover_color, text_color):
+        self.rect = pygame.Rect(x, y, width, height)
+        self.text = text
+        self.font = font
+        self.color = color
+        self.hover_color = hover_color
+        self.text_color = text_color
+
+    def draw(self, surface):
+        mouse_pos = pygame.mouse.get_pos()
+        mouse_click = pygame.mouse.get_pressed()
+        current_color = self.hover_color if self.rect.collidepoint(
+            mouse_pos) else self.color
+
+        temp = pygame.Surface(
+            (self.rect.width, self.rect.height), pygame.SRCALPHA)
+        pygame.draw.rect(temp, current_color,
+                         (0, 0, self.rect.width, self.rect.height))
+        surface.blit(temp, self.rect.topleft)
+        text_surf = self.font.render(self.text, True, self.text_color)
+        text_rect = text_surf.get_rect(center=self.rect.center)
+        surface.blit(text_surf, text_rect)
+        if self.rect.collidepoint(mouse_pos) and mouse_click[0]:
+            return True
+        return False

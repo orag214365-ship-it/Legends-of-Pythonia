@@ -2,7 +2,8 @@ import os
 import json
 
 path = "data/UserProfile.json"
-base_character = {"name": "", "class": "", "level": 1, "donewithcreation": 0}
+base_character = {"name": "", "class": "",
+                  "level": 1, "donewithcreation": 0, "area": 1}
 if not os.path.exists(path):
     os.makedirs("data", exist_ok=True)
     with open(path, "w") as f:

@@ -1,16 +1,16 @@
 {
     "changeable_stats": {
-        "attack": 4,
-        "defense": 12,
-        "speed": 3,
-        "health": 15,
-        "mana": 10
+        "attack": 6,
+        "defense": 4,
+        "speed": 4,
+        "health": 8,
+        "mana": 151
     },
     "normal_stats": {
-        "attack": 4,
-        "defense": 12,
-        "speed": 3,
-        "health": 15,
-        "mana": 10
+        "attack": 6,
+        "defense": 4,
+        "speed": 4,
+        "health": 8,
+        "mana": 151
     }
 }
