@@ -1,4 +1,4 @@
-from GUI.gui import startScreen, testScreen
+from GUI.gui import startScreen, testScreen, tutorial
 from GUI.charachter_creation import chooseClass, chooseName, confirmUserData
 from GUI.gui_classes import Button, Entry, DialogueBox
 from Data.player_profile import saveUserProfile, userprofile
@@ -16,3 +16,6 @@ if not userprofile["donewithcreation"]:
             break
         else:
             continue
+
+if userprofile["area"] == 1:
+    tutorial()

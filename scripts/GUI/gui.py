@@ -69,3 +69,26 @@ def startScreen():
 def tutorial():
     pygame.init()
     screen = pygame.display.set_mode((650, 500))
+    pygame.display.set_caption("Legends of Pythonia")
+    font = pygame.font.Font("assets/BoldPixels.ttf", 50)
+    tut_dialouge_text = "Hello press me to progress"
+    tut_dialouge_box = DialogueBox(
+        50, 300, 500, 50, tut_dialouge_text, font, (0, 0, 0, 0), (255, 165, 0, 100), (255, 255, 255))
+
+    backgound = pygame.image.load("assets/blackscreen.jpg")
+    backgound = pygame.transform.scale(backgound, (650, 500))
+
+    running = True
+
+    while running:
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                pygame.quit()
+                sys.exit()
+
+        screen.blit(backgound, (0, 0))
+        for i in range(3):
+            if tut_dialouge_box.draw(screen):
+                tut_dialouge_text = "We are no gonna start the fighting tutorial"
+
+        pygame.display.flip()
